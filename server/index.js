@@ -17,4 +17,4 @@ server
     .use("/exercise", exerciseController.router)
     .listen(3001);
 
-console.log("http://localhost:3000");
+console.log("http://localhost:3001");

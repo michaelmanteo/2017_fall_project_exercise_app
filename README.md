@@ -1,2 +1,5 @@
-# 2017_fall_project_exercise_app
-This is my final project for Web Programming Fall 2017 at SUNY New Paltz.
+# 2017fall
+what do you meme
+
+## This is a game
+Based on Bubble Talk
