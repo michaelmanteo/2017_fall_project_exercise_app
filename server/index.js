@@ -15,6 +15,7 @@ server
     .use("/signup", signupController.router)
     .use("/calories", calorieController.router)
     .use("/exercise", exerciseController.router)
-    .listen(3001);
+    .listen(3001, function(){
+        console.log("http://localhost:3001");
+    });
 
-console.log("http://localhost:3001");

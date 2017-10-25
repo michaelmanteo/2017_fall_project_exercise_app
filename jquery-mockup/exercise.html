@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="https://bootswatch.com/cyborg/bootstrap.css">
-    
+
     <title>Exercise Tracker</title>
 </head>
 
@@ -16,40 +16,50 @@
         <div id="header-placeholder"></div>
 
         <div class="jumbotron">
-           
-            <div class="container"> 
+
+            <div class="container">
                 <h4>Daily Exercise Tracker</h4>
+                
+                <div class ="col-md-12">
+                    <div class="input-group" id="myForm">
+                        <span class="input-group-btn">
+                                    <button class="btn btn-secondary" id="addExercise" type="submit">+</button>
+                                </span>
+                        <input type="text" class="form-control" placeholder="Enter exercise..." aria-label="Enter exercise...">
+                    </div>
+                </div>
+                
                 <div class="row">
+                    
                     <div class="col-md-3">
                         <div class="card">
-                            <div class="card-header"><h5>To do</h5></div>
-                            <ul class="list-group list-group-flush" id="players">
-                                <li class="list-group-item">Cras justo odio</li>
-                                <li class="list-group-item">Dapibus ac facilisis in</li>
-                                <li class="list-group-item">Vestibulum at eros</li>
+                            <div class="card-header">
+                                <h5>To do</h5>
+                            </div>
+                            <ul class="list-group list-group-flush" id="todo-list">
+                                <li class="list-group-item">
+                                    <button type="button">+</button> Upper Body</li>
+                                <li class="list-group-item">
+                                    <button type="button">+</button> Calisthenics</li>
+                                <li class="list-group-item">
+                                    <button type="button">+</button> Cardio</li>
                             </ul>
-
                         </div>
                         <br>
-                        <div class="card">
-                            <div class="card-header"><h5>Done</h5></div>
-                            <ul class="list-group list-group-flush" id="my-quotes">
-                                <li class="list-group-item"></li>
-                            </ul>
-                        </div>
+
                     </div>
 
                     <div class="col-md-9">
+
                         <div class="card">
-                            <div class="card">
-                                <div class="card-header"><h5>Total Calories Consumed</h5></div>
-                                <div class="card-body">
-                                    some number
-                                </div>
+                            <div class="card-header">
+                                <h5>Done</h5>
                             </div>
+                            <ul class="list-group list-group-flush" id="done-list">
+                                
+                            </ul>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
