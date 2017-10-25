@@ -42,7 +42,7 @@ athlete.init().done(() => {
         var workout = this.parentElement.innerText;
         console.log(workout);
         $("#done-list").append(x => `<li class="list-group-item">${workout}</li>`);
-        
+        $(this.parentNode).remove();
     });
 });
 
