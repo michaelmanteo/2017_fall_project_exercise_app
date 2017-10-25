@@ -6,6 +6,7 @@ const exerciseController = require("./exerciseController");
 const calorieController = require("./calorieController");
 const loginController = require("./loginController");
 const signupController = require("./signupController")
+const exerciseModel = require("./exerciseModel");
 const server = express();
 
 server

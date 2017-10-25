@@ -1,7 +1,6 @@
 // Controller
 
 const express = require('express');
-const tracker = require('./trackerModel');
 const router = express.Router();
 var path = require('path');
 var html_dir = './jquery-mockup/';
