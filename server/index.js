@@ -1,7 +1,6 @@
 // Server
 
 const express = require("express");
-const handler = require("./httpHandler");
 const exerciseController = require("./exerciseController");
 const calorieController = require("./calorieController");
 const loginController = require("./loginController");
@@ -11,7 +10,6 @@ const server = express();
 
 server
     .use("/", express.static("./jquery-mockup"))
-    .use("/old", handler.main)
     .use("/login", loginController.router)
     .use("/signup", signupController.router)
     .use("/calories", calorieController.router)

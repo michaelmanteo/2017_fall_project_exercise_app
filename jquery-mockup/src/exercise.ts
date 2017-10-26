@@ -34,7 +34,7 @@ export class User {
 }
 
 var athlete = new User();
-athlete.init().done(() => {
+athlete.init().done( () => {
     athlete.drawToDo();
     athlete.drawDone();
 
