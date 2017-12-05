@@ -15,15 +15,14 @@ export class ExerciseService {
   }
 
   login(name: string, password: string){
-
-    this.http.post(this.apiRoot + "/exercise/room/users", { name, password }).subscribe(
+    this.athlete = new User(); 
+    
+    this.http.post(this.apiRoot + "/exercise/player", { name, password }).subscribe(
       data => {
-        console.log(data.json());
-      
-        this.athlete = data.json();
 
-        this.http.get(this.apiRoot + "/exercise/room/player/todo").subscribe(data => {
+        this.http.get(this.apiRoot + "/exercise/player/todo").subscribe(data => {
           this.athlete.todoList = data.json();
+        
         })
 
         this.router.navigate(['exercise']);
