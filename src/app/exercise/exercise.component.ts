@@ -13,6 +13,7 @@ import { ExerciseService } from '../models/exercise.service';
 export class ExerciseComponent implements OnInit {
 
   apiRoot = "//localhost:3001";
+  newWorkout: string;
   athlete: User;
 
   constructor(private http: Http, private router: Router, private exerciseService: ExerciseService) { }
@@ -22,14 +23,9 @@ export class ExerciseComponent implements OnInit {
         this.router.navigate(['/login']);
     }
     this.athlete = this.exerciseService.athlete;
-
-    // this.http.get(this.apiRoot + "/exercise/todo").subscribe(data => {
-    //   this.athlete.todoList = data.json();
-    // });
   }
 
-  update() {
-
+  updateDone() {
     this.http.get(this.apiRoot + "/exercise/player/done").subscribe(data => {
       this.athlete.doneList = data.json();
     });
@@ -41,10 +37,15 @@ export class ExerciseComponent implements OnInit {
     this.http.post(this.apiRoot + "/exercise/player/done", list).subscribe( res => {
       this.athlete.todoList.splice(i, 1);
       this.athlete.doneList.push( res.json() );
-      this.update();
+      this.updateDone();
 
     });
 
   }
 
+  addNewExercise(e: MouseEvent){
+    e.preventDefault();
+    const data: list = { text: this.newWorkout };
+    this.athlete.todoList.push(data);
+  }
 }

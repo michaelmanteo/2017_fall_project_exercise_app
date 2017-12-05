@@ -17,8 +17,9 @@ router.post("/player/done",(req, res) => {
 
 router.post("/player", (req, res) => {
     if(req.body.password == "password"){
-        tracker.player.name = req.body.name;   
-        console.log(req.body.name);
+        tracker.player.name = req.body.name;  
+        tracker.users.push(tracker.player.name); 
+        //console.log(req.body.name);
         res.status(201).send(tracker.player);
     }else{
         res.status(403).send("Invalid Password");

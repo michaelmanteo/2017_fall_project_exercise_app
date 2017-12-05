@@ -1,9 +1,54 @@
 <div class="jumbotron">
 
   <div class="container">
-    <h4>Daily Exercise Tracker</h4>
-    <h5>Here is a list of worksouts</h5>
+    <h4>Exercise Tracker</h4>
 
+    <div class="row">
+
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-header">
+            <h5>Athlete</h5>
+          </div>
+          <ul>
+            <li class="list-group list-group-flush">
+              {{athlete.name}}</li>
+          </ul>
+        </div>
+      </div>
+
+
+
+    </div>
+    <br>
+
+    <div class="row">
+
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-header">
+            <h5>Add a workout</h5>
+          </div>
+          
+          <div class="input-group">
+            <input [(ngModel)]="newWorkout" type="text" class="form-control" placeholder="Workout name..." aria-label="Workout name...">
+            <span class="input-group-btn">
+              <button (click)="addNewExercise($event)" class="btn btn-secondary" type="button">add</button>
+            </span>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+
+
+
+
+
+    <br>
+    <h5>Workouts</h5>
     <div class="row">
 
       <div class="col-md-3">
@@ -12,8 +57,7 @@
             <h5>To do</h5>
           </div>
           <ul class="list-group list-group-flush" id="todo-list">
-            <li *ngFor="let x of athlete.todoList; index as i" class="list-group-item"
-                (click)="finishExercise($event, x, i )">{{x.text}}</li>
+            <li *ngFor="let x of athlete.todoList; index as i" class="list-group-item" (click)="finishExercise($event, x, i )">{{x.text}}</li>
           </ul>
         </div>
         <br>

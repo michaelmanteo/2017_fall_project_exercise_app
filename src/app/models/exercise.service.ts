@@ -16,10 +16,10 @@ export class ExerciseService {
 
   login(name: string, password: string){
     this.athlete = new User(); 
-    
+
     this.http.post(this.apiRoot + "/exercise/player", { name, password }).subscribe(
       data => {
-
+        this.athlete.name = name;
         this.http.get(this.apiRoot + "/exercise/player/todo").subscribe(data => {
           this.athlete.todoList = data.json();
         
