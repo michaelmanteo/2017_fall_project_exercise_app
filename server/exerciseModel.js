@@ -7,7 +7,5 @@ module.exports = {
         { text: "Calisthenics"}
     ],
 
-    done: [
-        { text: "I Ran at 3am this morning" }
-    ]
+    done: [  ]
  }

@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { User, list } from '../models/exercise'
-import * as $ from 'jquery';
+import { User, list } from '../models/exercise';
+import { Http } from '@angular/http';
+
 
 @Component({
   selector: 'app-exercise',
@@ -8,34 +9,36 @@ import * as $ from 'jquery';
   styleUrls: ['./exercise.component.css']
 })
 export class ExerciseComponent implements OnInit {
-  apiRoot = "//localhost:3001" ;
+
+  apiRoot = "//localhost:3001";
   athlete = new User();
-  
-  constructor() { }
+
+  constructor(private http: Http) { }
 
   ngOnInit() {
-    setInterval(() => this.update(), 1000)
 
-    $.getJSON(this.apiRoot + "/exercise/todo").done(data => {
-      this.athlete.todoList = data;
-    })
-
-  }
-
-  update() {
-   /*$.getJSON(this.apiRoot + "/exercise/todo").done(data => {
-      this.athlete.todoList = data;
-    }); */
-
-    $.getJSON(this.apiRoot + "/exercise/done").done(data => {
-      this.athlete.doneList = data;
+    this.http.get(this.apiRoot + "/exercise/todo").subscribe(data => {
+      this.athlete.todoList = data.json();
     });
   }
 
-  finishExercise(e: MouseEvent, list: list, i: number){
+  update() {
+
+    this.http.get(this.apiRoot + "/exercise/done").subscribe(data => {
+      this.athlete.doneList = data.json();
+    });
+  }
+
+  finishExercise(e: MouseEvent, list: list, i: number) {
     e.preventDefault();
-    $.post(this.apiRoot + "/exercise/done" , list);
-    this.athlete.todoList.splice(i, 1);
+    
+    this.http.post(this.apiRoot + "/exercise/done", list).subscribe( res => {
+      this.athlete.todoList.splice(i, 1);
+      this.athlete.doneList.push( res.json() );
+      this.update();
+
+    });
+
   }
 
 }
