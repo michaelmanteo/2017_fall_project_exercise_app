@@ -23,6 +23,7 @@ export class ExerciseComponent implements OnInit {
         this.router.navigate(['/login']);
     }
     this.athlete = this.exerciseService.athlete;
+    this.updateDone();
   }
 
   updateDone() {
@@ -33,7 +34,7 @@ export class ExerciseComponent implements OnInit {
 
   finishExercise(e: MouseEvent, list: list, i: number) {
     e.preventDefault();
-
+    const data = { name: this.athlete.name, workout: list}
     this.http.post(this.apiRoot + "/exercise/player/done", list).subscribe( res => {
       this.athlete.todoList.splice(i, 1);
       this.athlete.doneList.push( res.json() );
@@ -41,6 +42,12 @@ export class ExerciseComponent implements OnInit {
 
     });
 
+  }
+
+  deleteExercise(e: MouseEvent, list: list, i: number){
+    e.preventDefault();
+
+    this.athlete.todoList.splice(i, 1);
   }
 
   addNewExercise(e: MouseEvent){

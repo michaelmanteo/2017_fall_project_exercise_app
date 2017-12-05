@@ -9,7 +9,7 @@ const exerciseModel = require("./exerciseModel");
 const bodyParser = require("body-parser");
 const server = express();
 
-
+// Body Parser Middleware 
 server.use(bodyParser.urlencoded());
 server.use(bodyParser.json());
 
@@ -21,10 +21,6 @@ server.use(function(req, res, next) {
   });
 
 server
-    .use("/", express.static("./jquery-mockup"))
-    .use("/login", loginController.router)
-    .use("/signup", signupController.router)
-    .use("/calories", calorieController.router)
     .use("/exercise", exerciseController.router)
     .listen(3001, function(){
         console.log("http://localhost:3001");

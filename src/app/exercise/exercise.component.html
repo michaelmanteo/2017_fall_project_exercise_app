@@ -48,23 +48,27 @@
 
 
     <br>
-    <h5>Workouts</h5>
+    <h5>Workout Routine</h5>
+    <h6>Click to complete...</h6>
     <div class="row">
 
-      <div class="col-md-3">
+      <div class="col-md-6">
         <div class="card">
           <div class="card-header">
             <h5>To do</h5>
           </div>
           <ul class="list-group list-group-flush" id="todo-list">
-            <li *ngFor="let x of athlete.todoList; index as i" class="list-group-item" (click)="finishExercise($event, x, i )">{{x.text}}</li>
+            <li *ngFor="let x of athlete.todoList; index as i" class="list-group-item" >{{x.text}}
+              <button (click)="finishExercise($event, x, i )" style="float: right;" class="badge badge-info"type="button" class="btn btn-secondary btn-sm">Finish</button> 
+              <button (click)="deleteExercise($event, x, i )" style="float: right;" class="badge badge-info"type="button" class="btn btn-secondary btn-sm">Delete</button>
+            </li>
           </ul>
         </div>
         <br>
 
       </div>
 
-      <div class="col-md-9">
+      <div class="col-md-6">
 
         <div class="card">
           <div class="card-header">
