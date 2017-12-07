@@ -3,7 +3,7 @@ export class list {
 }
 
 export class User {
-    name: string = "Michael Manteo";
+    name: string;
     todoList: list[] = [];
     doneList: list[] = [];
 }

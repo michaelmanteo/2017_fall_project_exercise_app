@@ -19,8 +19,8 @@ export class ExerciseComponent implements OnInit {
   constructor(private http: Http, private router: Router, private exerciseService: ExerciseService) { }
 
   ngOnInit() {
-    if(this.exerciseService.athlete == null){
-        this.router.navigate(['/login']);
+    if (this.exerciseService.athlete == null) {
+      this.router.navigate(['/login']);
     }
     this.athlete = this.exerciseService.athlete;
     this.updateDone();
@@ -34,25 +34,27 @@ export class ExerciseComponent implements OnInit {
 
   finishExercise(e: MouseEvent, list: list, i: number) {
     e.preventDefault();
-    const data = { name: this.athlete.name, workout: list}
-    this.http.post(this.apiRoot + "/exercise/player/done", list).subscribe( res => {
+    const data = { name: this.athlete.name, workout: list }
+    this.http.post(this.apiRoot + "/exercise/player/done", list).subscribe(res => {
       this.athlete.todoList.splice(i, 1);
-      this.athlete.doneList.push( res.json() );
+      this.athlete.doneList.push(res.json());
       this.updateDone();
 
     });
 
   }
 
-  deleteExercise(e: MouseEvent, list: list, i: number){
+  deleteExercise(e: MouseEvent, list: list, i: number) {
     e.preventDefault();
 
     this.athlete.todoList.splice(i, 1);
   }
 
-  addNewExercise(e: MouseEvent){
+  addNewExercise(e: MouseEvent) {
     e.preventDefault();
-    const data: list = { text: this.newWorkout };
-    this.athlete.todoList.push(data);
+    if (this.newWorkout) {
+      const data: list = { text: this.newWorkout };
+      this.athlete.todoList.push(data);
+    }
   }
 }
