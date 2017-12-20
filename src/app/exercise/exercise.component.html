@@ -18,13 +18,36 @@
       </div>
 
 
+      <div class="col-md-3">
+          <div class="card">
+            <div class="card-header">
+              <h5>Other Athlete</h5>
+            </div>
+            <ul>
+                <li *ngFor="let x of room.users; index as i" class="list-group-item" >{{x.name}}</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              <h5>Workout Feed</h5>
+            </div>
+            <ul>
+                <li *ngFor="let x of room.workouts" class="list-group-item" >{{x.name}} completed {{x.text}}. </li>
+            </ul>
+          </div>
+        </div>
+
+
 
     </div>
     <br>
 
     <div class="row">
 
-      <div class="col-md-3">
+      <div class="col-md-2">
         <div class="card">
           <div class="card-header">
             <h5>Add a workout</h5>
@@ -39,12 +62,7 @@
         </div>
       </div>
 
-
-
     </div>
-
-
-
 
 
     <br>
@@ -52,14 +70,14 @@
     <h6>Click to complete...</h6>
     <div class="row">
 
-      <div class="col-md-6">
+      <div class="col-md-4">
         <div class="card">
           <div class="card-header">
             <h5>To do</h5>
           </div>
           <ul class="list-group list-group-flush" id="todo-list">
             <li *ngFor="let x of athlete.todoList; index as i" class="list-group-item" >{{x.text}}
-              <button (click)="finishExercise($event, x, i )" style="float: right;" class="badge badge-info"type="button" class="btn btn-secondary btn-sm">Finish</button> 
+              <button (click)="finishExercise($event, x, i, athlete )" style="float: right;" class="badge badge-info"type="button" class="btn btn-secondary btn-sm">Finish</button> 
               <button (click)="deleteExercise($event, x, i )" style="float: right;" class="badge badge-info"type="button" class="btn btn-secondary btn-sm">Delete</button>
             </li>
           </ul>

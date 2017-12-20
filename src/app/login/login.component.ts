@@ -21,8 +21,4 @@ export class LoginComponent implements OnInit {
     this.exercise.login(this.name, this.password);
   }
 
-  loginFB(){
-    this.exercise.loginFB();
-  }
-
 }

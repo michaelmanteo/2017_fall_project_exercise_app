@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { User, list } from '../models/exercise';
+import { User, list, Room } from '../models/exercise';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { ExerciseService } from '../models/exercise.service';
@@ -13,8 +13,10 @@ import { ExerciseService } from '../models/exercise.service';
 export class ExerciseComponent implements OnInit {
 
   apiRoot = "//localhost:3001";
+
   newWorkout: string;
   athlete: User;
+  room = new Room();
 
   constructor(private http: Http, private router: Router, private exerciseService: ExerciseService) { }
 
@@ -23,25 +25,22 @@ export class ExerciseComponent implements OnInit {
       this.router.navigate(['/login']);
     }
     this.athlete = this.exerciseService.athlete;
-    this.updateDone();
+    setInterval(() => this.update(), 1000)
   }
 
-  updateDone() {
-    this.http.get(this.apiRoot + "/exercise/player/done").subscribe(data => {
-      this.athlete.doneList = data.json();
+  update() {
+    this.http.get(this.exerciseService.apiRoot + "/exercise/room").subscribe(data => {
+      this.room = data.json();
     });
   }
 
-  finishExercise(e: MouseEvent, list: list, i: number) {
+  finishExercise(e: MouseEvent, list: list, i: number, user: User) {
     e.preventDefault();
-    const data = { name: this.athlete.name, workout: list }
-    this.http.post(this.apiRoot + "/exercise/player/done", list).subscribe(res => {
-      this.athlete.todoList.splice(i, 1);
-      this.athlete.doneList.push(res.json());
-      this.updateDone();
+    const data = { workout: list, user: user };
+    this.athlete.todoList.splice(i, 1);
+    this.athlete.doneList.push(list);
 
-    });
-
+    this.http.post(this.apiRoot + "/exercise/finish", data ).subscribe();
   }
 
   deleteExercise(e: MouseEvent, list: list, i: number) {
@@ -53,7 +52,7 @@ export class ExerciseComponent implements OnInit {
   addNewExercise(e: MouseEvent) {
     e.preventDefault();
     if (this.newWorkout) {
-      const data: list = { text: this.newWorkout };
+      const data: list = { text: this.newWorkout, name: this.athlete.name };
       this.athlete.todoList.push(data);
     }
   }

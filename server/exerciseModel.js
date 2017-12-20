@@ -1,7 +1,6 @@
 // Model
 module.exports = {
-    player: {
-        name: "",
+    defaultExercise: {
         todo: [
             { text: "Upper Body"},
             { text: "Rowing"},
@@ -10,8 +9,5 @@ module.exports = {
         ],
     
         done: [  ]
-    },
-
-    users: []
-    
+    }
  }
