@@ -12,7 +12,7 @@ import { ExerciseService } from '../models/exercise.service';
 })
 export class ExerciseComponent implements OnInit {
 
-  apiRoot = "//localhost:3001";
+  apiRoot : string;
 
   newWorkout: string;
   calories: number;
@@ -23,6 +23,8 @@ export class ExerciseComponent implements OnInit {
   constructor(private http: Http, private router: Router, private exerciseService: ExerciseService) { }
 
   ngOnInit() {
+    this.apiRoot = this.exerciseService.apiRoot;
+    
     if (this.exerciseService.athlete == null) {
       this.router.navigate(['/login']);
     }

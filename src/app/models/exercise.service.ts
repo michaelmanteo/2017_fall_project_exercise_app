@@ -14,7 +14,7 @@ export class ExerciseService {
   apiRoot: string;
 
   constructor(private http: Http, private router: Router) {
-    this.apiRoot = "//localhost:3001";
+    this.apiRoot = `//${window.location.hostname}:8081`;
 
   }
 
