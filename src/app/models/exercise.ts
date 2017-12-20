@@ -1,5 +1,6 @@
 export class list {
     text: string;
+    calories: number;
     name: string
 }
 

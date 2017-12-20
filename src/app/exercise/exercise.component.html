@@ -5,56 +5,30 @@
 
     <div class="row">
 
-      <div class="col-md-3">
+      <div class="col-md-6">
         <div class="card">
           <div class="card-header">
             <h5>Athlete</h5>
+            <h5 style="float: left;">Total calories burned: {{total}}</h5>
           </div>
-          <ul>
-            <li class="list-group list-group-flush">
-              {{athlete.name}}</li>
-          </ul>
+          <div class="card-body">
+            <ul>
+              <li class="list-group list-group-flush">
+                {{athlete.name}}</li>
+            </ul>
+          </div>
         </div>
       </div>
 
-
-      <div class="col-md-3">
-          <div class="card">
-            <div class="card-header">
-              <h5>Other Athlete</h5>
-            </div>
-            <ul>
-                <li *ngFor="let x of room.users; index as i" class="list-group-item" >{{x.name}}</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="card">
-            <div class="card-header">
-              <h5>Workout Feed</h5>
-            </div>
-            <ul>
-                <li *ngFor="let x of room.workouts" class="list-group-item" >{{x.name}} completed {{x.text}}. </li>
-            </ul>
-          </div>
-        </div>
-
-
-
-    </div>
-    <br>
-
-    <div class="row">
-
-      <div class="col-md-2">
+      <div class="col-md-6">
         <div class="card">
           <div class="card-header">
             <h5>Add a workout</h5>
           </div>
-          
+
           <div class="input-group">
             <input [(ngModel)]="newWorkout" type="text" class="form-control" placeholder="Workout name..." aria-label="Workout name...">
+            <input [(ngModel)]="calories" type="number" class="form-control" placeholder="Calorie amount..." aria-label="Calorie amount...">
             <span class="input-group-btn">
               <button (click)="addNewExercise($event)" class="btn btn-secondary" type="button">add</button>
             </span>
@@ -62,7 +36,9 @@
         </div>
       </div>
 
+
     </div>
+    <br>
 
 
     <br>
@@ -70,15 +46,16 @@
     <h6>Click to complete...</h6>
     <div class="row">
 
-      <div class="col-md-4">
+      <div class="col-md-6">
         <div class="card">
           <div class="card-header">
             <h5>To do</h5>
           </div>
           <ul class="list-group list-group-flush" id="todo-list">
-            <li *ngFor="let x of athlete.todoList; index as i" class="list-group-item" >{{x.text}}
-              <button (click)="finishExercise($event, x, i, athlete )" style="float: right;" class="badge badge-info"type="button" class="btn btn-secondary btn-sm">Finish</button> 
-              <button (click)="deleteExercise($event, x, i )" style="float: right;" class="badge badge-info"type="button" class="btn btn-secondary btn-sm">Delete</button>
+            <li *ngFor="let x of athlete.todoList; index as i" class="list-group-item">Routine: {{x.text}}
+              <br> Calorie: {{x.calories}}
+              <button (click)="finishExercise($event, x, i, athlete )" style="float: right;" class="badge badge-info" type="button" class="btn btn-secondary btn-sm">Finish</button>
+              <button (click)="deleteExercise($event, x, i )" style="float: right;" class="badge badge-info" type="button" class="btn btn-secondary btn-sm">Delete</button>
             </li>
           </ul>
         </div>
@@ -93,8 +70,38 @@
             <h5>Done</h5>
           </div>
           <ul class="list-group list-group-flush" id="done-list">
-            <li *ngFor="let x of athlete.doneList" class="list-group-item">{{x.text}}</li>
+            <li *ngFor="let x of athlete.doneList" class="list-group-item">Routine: {{x.text}}
+              <br> Calories: {{x.calories}}</li>
           </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h5>Other Athletes</h5>
+          </div>
+          <div class="card-body">
+            <ul>
+              <li *ngFor="let x of room.users; index as i" class="list-group-item">Name: {{x.name}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h5>Group Workout Feed</h5>
+          </div>
+
+          <div class="card-body">
+            <ul>
+              <li *ngFor="let x of room.workouts" class="list-group-item">{{x.name}} completed {{x.text}} and burned {{x.calories}} calories. </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

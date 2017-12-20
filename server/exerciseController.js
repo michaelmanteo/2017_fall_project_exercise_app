@@ -30,9 +30,10 @@ router
 
   .post("/finish", (req, res)=> {
      //console.log(req.body.workout.text);
-      let finishedWorkout = { text: req.body.workout.text, name: req.body.user.name }
+      let finishedWorkout = { text: req.body.workout.text, name: req.body.user.name, calories: req.body.workout.calories }
       room.workouts.push( finishedWorkout );
-      
+      //console.log({ text: req.body.workout.text, calories: req.body.workout.calories });
+     // room.users[req.body.user.id].doneList.push( { text: req.body.workout.text, calories: req.body.workout.calories } );
       //let user = room[req.body.user.id];
       //console.log( finishedWorkout );
 

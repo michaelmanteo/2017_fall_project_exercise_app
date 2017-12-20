@@ -15,6 +15,8 @@ export class ExerciseComponent implements OnInit {
   apiRoot = "//localhost:3001";
 
   newWorkout: string;
+  calories: number;
+  total: number = 0;
   athlete: User;
   room = new Room();
 
@@ -34,6 +36,11 @@ export class ExerciseComponent implements OnInit {
     });
   }
 
+  calculateBurnedCalories(calories: number){
+     let length = this.athlete.doneList.length;
+    this.total += calories;
+  }
+
   finishExercise(e: MouseEvent, list: list, i: number, user: User) {
     e.preventDefault();
     const data = { workout: list, user: user };
@@ -41,6 +48,7 @@ export class ExerciseComponent implements OnInit {
     this.athlete.doneList.push(list);
 
     this.http.post(this.apiRoot + "/exercise/finish", data ).subscribe();
+    this.calculateBurnedCalories(list.calories);
   }
 
   deleteExercise(e: MouseEvent, list: list, i: number) {
@@ -52,7 +60,7 @@ export class ExerciseComponent implements OnInit {
   addNewExercise(e: MouseEvent) {
     e.preventDefault();
     if (this.newWorkout) {
-      const data: list = { text: this.newWorkout, name: this.athlete.name };
+      const data: list = { text: this.newWorkout, name: this.athlete.name, calories: this.calories };
       this.athlete.todoList.push(data);
     }
   }
