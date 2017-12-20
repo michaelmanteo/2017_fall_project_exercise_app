@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ExerciseService } from '../models/exercise.service';
 
 @Component({
   selector: 'app-nav',
@@ -8,9 +9,13 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
+  constructor(private exercise: ExerciseService) { }
 
   ngOnInit() {
+  }
+
+  logout(){ 
+    this.exercise.logout();
   }
 
 }

@@ -18,6 +18,10 @@ export class ExerciseService {
 
   }
 
+  logout(){
+    this.athlete == null;
+  }
+
   login(name: string, password: string) {
     this.http.post(this.apiRoot + "/exercise/player", { name, password }).subscribe(
       data => {

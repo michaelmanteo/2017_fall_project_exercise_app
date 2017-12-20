@@ -15,7 +15,7 @@
          
         </div>
       </div>
-      <a class="btn btn-primary" (click)="login()">Log in</a>
+      <a class="btn btn-primary" *ngIf="exercise.athlete == null" (click)="login()">Log in</a>
 
     </div>
   </div>
