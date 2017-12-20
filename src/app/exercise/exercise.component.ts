@@ -36,10 +36,7 @@ export class ExerciseComponent implements OnInit {
     });
   }
 
-  calculateBurnedCalories(calories: number){
-     let length = this.athlete.doneList.length;
-    this.total += calories;
-  }
+  calculateBurnedCalories(calories: number){ this.total += calories;  }
 
   finishExercise(e: MouseEvent, list: list, i: number, user: User) {
     e.preventDefault();
@@ -53,7 +50,6 @@ export class ExerciseComponent implements OnInit {
 
   deleteExercise(e: MouseEvent, list: list, i: number) {
     e.preventDefault();
-
     this.athlete.todoList.splice(i, 1);
   }
 

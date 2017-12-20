@@ -19,7 +19,8 @@ export class ExerciseService {
   }
 
   logout(){
-    this.athlete == null;
+    this.athlete = null;
+    this.users = null;
   }
 
   login(name: string, password: string) {
