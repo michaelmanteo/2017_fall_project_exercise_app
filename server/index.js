@@ -2,7 +2,6 @@
 
 const express = require("express");
 const exerciseController = require("./exerciseController");
-const calorieController = require("./calorieController");
 const exerciseModel = require("./exerciseModel");
 const bodyParser = require("body-parser");
 

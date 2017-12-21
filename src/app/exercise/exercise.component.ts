@@ -18,7 +18,7 @@ export class ExerciseComponent implements OnInit {
   calories: number;
   total: number = 0;
   athlete: User;
-  room = new Room();
+  room: Room = new Room();
 
   constructor(private http: Http, private router: Router, private exerciseService: ExerciseService) { }
 
@@ -42,7 +42,7 @@ export class ExerciseComponent implements OnInit {
 
   finishExercise(e: MouseEvent, list: list, i: number, user: User) {
     e.preventDefault();
-    const data = { workout: list, user: user };
+    const data = { workout: list, user: user, i: i };
     this.athlete.todoList.splice(i, 1);
     this.athlete.doneList.push(list);
 

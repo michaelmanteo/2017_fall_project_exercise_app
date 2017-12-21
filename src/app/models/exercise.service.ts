@@ -18,7 +18,7 @@ export class ExerciseService {
 
     window.fbAsyncInit = function () {
       FB.init({
-        appId: '135665217111332',
+        appId: '798885393627137',
         cookie: true,
         xfbml: true,
         version: 'v2.11'
@@ -38,8 +38,8 @@ export class ExerciseService {
   }
 
   logout() {
-    this.athlete = null;
-    this.users = null;
+   this.athlete == null;
+   
   }
 
   login(name: string, password: string, fbid?: number, fbpicture?: string) {
