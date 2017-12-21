@@ -10,6 +10,7 @@ import { IndexComponent } from './index/index.component';
 import { ExerciseComponent } from './exercise/exercise.component';
 import { LoginComponent } from './login/login.component';
 import { ExerciseService } from './models/exercise.service';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ExerciseService } from './models/exercise.service';
     NavComponent,
     IndexComponent,
     LoginComponent,
-    ExerciseComponent
+    ExerciseComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,HttpModule, FormsModule,
