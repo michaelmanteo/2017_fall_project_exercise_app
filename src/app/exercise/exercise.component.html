@@ -86,7 +86,9 @@
           </div>
           <div class="card-body">
             <ul>
-              <li *ngFor="let x of room.users; index as i" class="list-group-item">Name: {{x.name}}</li>
+              <li *ngFor="let x of room.users; index as i" class="list-group-item">
+                 <img [src]="x.picture" style="width: 26px;" class="rounded" />
+                 {{x.name}}</li>
             </ul>
           </div>
         </div>

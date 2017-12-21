@@ -5,7 +5,11 @@ const exerciseController = require("./exerciseController");
 const calorieController = require("./calorieController");
 const exerciseModel = require("./exerciseModel");
 const bodyParser = require("body-parser");
+
+const port = 8081;
 const server = express();
+
+
 
 // Body Parser Middleware 
 server.use(bodyParser.urlencoded());
@@ -20,7 +24,7 @@ server.use(function(req, res, next) {
 
 server
     .use("/exercise", exerciseController.router)
-    .listen(3001, function(){
-        console.log("http://localhost:3001");
-    });
+    .listen(port)
+
+console.log(`http://localhost:${port}`);
 

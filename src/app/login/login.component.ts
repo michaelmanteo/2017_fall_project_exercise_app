@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ExerciseService } from '../models/exercise.service';
 import { Router } from '@angular/router';
+import { PACKAGE_ROOT_URL } from '@angular/core/src/application_tokens';
 
 @Component({
   selector: 'app-login',
@@ -21,4 +22,7 @@ export class LoginComponent implements OnInit {
     this.exercise.login(this.name, this.password);
   }
 
+  loginFB(){
+    this.exercise.loginFB();
+  }
 }
